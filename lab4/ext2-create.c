@@ -74,7 +74,8 @@ typedef int32_t i32;
 #define EXT2_N_BLOCKS (EXT2_TIND_BLOCK + 1)
 
 #define EXT2_NAME_LEN 255
-
+// My Code
+#define EXT2_SUPER_MAGIC 0xEF53
 struct ext2_superblock
 {
 	u32 s_inodes_count;
@@ -224,20 +225,20 @@ void write_superblock(int fd)
 	superblock.s_blocks_per_group = 8 * BLOCK_SIZE;
 	superblock.s_frags_per_group = 8 * BLOCK_SIZE;
 	superblock.s_inodes_per_group = NUM_INODES;
-	superblock.s_mtime = 0;			  /* Mount time */
-	superblock.s_wtime = 0;			  /* Write time */
-	superblock.s_mnt_count = 0;		  /* Number of times mounted so far */
-	superblock.s_max_mnt_count = 0;	  /* Make this unlimited */
-	superblock.s_magic = 0;			  /* ext2 Signature */
-	superblock.s_state = 0;			  /* File system is clean */
-	superblock.s_errors = 0;		  /* Ignore the error (continue on) */
-	superblock.s_minor_rev_level = 0; /* Leave this as 0 */
-	superblock.s_lastcheck = 0;		  /* Last check time */
-	superblock.s_checkinterval = 0;	  /* Force checks by making them every 1 second */
-	superblock.s_creator_os = 0;	  /* Linux */
-	superblock.s_rev_level = 0;		  /* Leave this as 0 */
-	superblock.s_def_resuid = 0;	  /* root */
-	superblock.s_def_resgid = 0;	  /* root */
+	superblock.s_mtime = 0;				   /* Mount time */
+	superblock.s_wtime = 0;				   /* Write time */
+	superblock.s_mnt_count = 0;			   /* Number of times mounted so far */
+	superblock.s_max_mnt_count = 0;		   /* Make this unlimited */
+	superblock.s_magic = EXT2_SUPER_MAGIC; /* ext2 Signature */
+	superblock.s_state = 0;				   /* File system is clean */
+	superblock.s_errors = 0;			   /* Ignore the error (continue on) */
+	superblock.s_minor_rev_level = 0;	   /* Leave this as 0 */
+	superblock.s_lastcheck = 0;			   /* Last check time */
+	superblock.s_checkinterval = 0;		   /* Force checks by making them every 1 second */
+	superblock.s_creator_os = 0;		   /* Linux */
+	superblock.s_rev_level = 0;			   /* Leave this as 0 */
+	superblock.s_def_resuid = 0;		   /* root */
+	superblock.s_def_resgid = 0;		   /* root */
 
 	/* You can leave everything below this line the same, delete this
 	   comment when you're done the lab */
