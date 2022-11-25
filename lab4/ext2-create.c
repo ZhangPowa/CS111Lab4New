@@ -302,6 +302,11 @@ void write_block_bitmap(int fd)
 	{
 		errno_exit("lseek");
 	}
+	ssize_t size = BLOCK_SIZE;
+	if (write(fd, 0XFFFFFF, size) != size)
+	{
+		errno_exit("write");
+	}
 }
 
 void write_inode_bitmap(int fd)
