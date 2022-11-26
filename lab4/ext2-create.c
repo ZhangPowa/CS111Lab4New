@@ -305,6 +305,16 @@ void write_block_bitmap(int fd)
 	u32 buffer[256];
 	buffer[0] = 0x007FFFFF;
 
+	for (i = 1; i < 32; i++)
+	{
+		buffer[i] = 0x00000000;
+	}
+
+	for (i = 32; i < 256; i++)
+	{
+		buffer[i] = 0xFFFFFFFF;
+	}
+
 	ssize_t size = sizeof(buffer);
 	if (write(fd, buffer, size) != size)
 	{
