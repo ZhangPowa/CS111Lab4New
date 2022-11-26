@@ -302,11 +302,11 @@ void write_block_bitmap(int fd)
 	{
 		errno_exit("lseek");
 	}
-	u32 buf[256];
-	buf[0] = 0xF0;
+	u32 buffer[256];
+	buffer[0] = 0x007FFFFF;
 
-	ssize_t size = sizeof(buf);
-	if (write(fd, buf, size) != size)
+	ssize_t size = sizeof(buffer);
+	if (write(fd, buffer, size) != size)
 	{
 		errno_exit("write");
 	}
