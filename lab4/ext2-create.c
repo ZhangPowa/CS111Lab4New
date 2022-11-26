@@ -419,7 +419,7 @@ void write_inode_table(int fd)
 	struct ext2_inode hello_symlink_inode = {13};
 	hello_symlink_inode.i_mode = EXT2_S_IFLNK | EXT2_S_IRUSR | EXT2_S_IWUSR | EXT2_S_IRGRP | EXT2_S_IROTH;
 	hello_symlink_inode.i_uid = 1000;
-	hello_symlink_inode.i_size = 1024;
+	hello_symlink_inode.i_size = 12;
 	hello_symlink_inode.i_atime = current_time;
 	hello_symlink_inode.i_ctime = current_time;
 	hello_symlink_inode.i_mtime = current_time;
