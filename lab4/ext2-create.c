@@ -305,10 +305,12 @@ void write_block_bitmap(int fd)
 	u32 buffer[256];
 	buffer[0] = 0x007FFFFF;
 
-	for (int i = 1; i < 32; i++)
+	for (int i = 1; i < 31; i++)
 	{
-		buffer[i] = 0x80000000;
+		buffer[i] = 0x00000000;
 	}
+
+	buffer[31] = 0x80000000;
 
 	for (int i = 32; i < 256; i++)
 	{
