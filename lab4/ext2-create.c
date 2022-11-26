@@ -332,6 +332,26 @@ void write_inode_bitmap(int fd)
 	{
 		errno_exit("lseek");
 	}
+	u32 buffer[256];
+	buffer[0] = 0x0001FFFF;
+
+	for (int i = 1; i < 3; i++)
+	{
+		buffer[i] = 0x00000000;
+	}
+
+	buffer[3] = 0x80000000;
+
+	for (int i = 4; i < 256; i++)
+	{
+		buffer[i] = 0xFFFFFFFF;
+	}
+
+	ssize_t size = sizeof(buffer);
+	if (write(fd, buffer, size) != size)
+	{
+		errno_exit("write");
+	}
 }
 
 void write_inode(int fd, u32 index, struct ext2_inode *inode)
