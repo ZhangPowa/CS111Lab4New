@@ -428,7 +428,7 @@ void write_inode_table(int fd)
 	root_dir_inode.i_links_count = 1;
 	root_dir_inode.i_blocks = 2; /* These are oddly 512 blocks */
 	root_dir_inode.i_block[0] = HELLO_WORLD_FILE_BLOCKNO;
-	write_inode(fd, HELLO_WORLD_INO, &hello_world_inode);
+	write_inode(fd, HELLO_WORLD_INO, &hello_world_symlink_inode);
 }
 
 void write_root_dir_block(int fd)
