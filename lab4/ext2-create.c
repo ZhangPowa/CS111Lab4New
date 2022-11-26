@@ -303,7 +303,7 @@ void write_block_bitmap(int fd)
 		errno_exit("lseek");
 	}
 	ssize_t size = BLOCK_SIZE;
-	if (write(fd, "0b11110000", size) != size)
+	if (write(fd, "11110000", size) != size)
 	{
 		errno_exit("write");
 	}
