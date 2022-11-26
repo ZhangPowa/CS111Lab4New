@@ -416,7 +416,7 @@ void write_inode_table(int fd)
 	root_dir_inode.i_block[0] = HELLO_WORLD_FILE_BLOCKNO;
 	write_inode(fd, HELLO_WORLD_INO, &hello_world_inode);
 
-	struct ext2_inode hello_world_inode = {8};
+	struct ext2_inode hello_world_symlink_inode = {8};
 	root_dir_inode.i_mode = EXT2_S_IFLNK | EXT2_S_IRUSR | EXT2_S_IWUSR | EXT2_S_IRGRP | EXT2_S_IROTH;
 	root_dir_inode.i_uid = 1000;
 	root_dir_inode.i_size = 1024;
