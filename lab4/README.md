@@ -26,6 +26,18 @@ sudo mount -o loop cs111 -base.img mnt # mount your filesystem , loop lets you u
 
 Output of 'ls -ain'
 
+total 7
+
+2 drwxr-xr-x 3 0 0 1024 Nov 26 15:03 .
+
+934 drwxr-xr-x 3 1000 1000 4096 Nov 26 15:05 ..
+
+13 lrw-r--r-- 1 1000 1000 11 Nov 26 15:03 hello -> hello-world
+
+12 -rw-r--r-- 1 1000 1000 12 Nov 26 15:03 hello-world
+
+11 drwxr-xr-x 2 0 0 1024 Nov 26 15:03 lost+found
+
 ## Cleaning up
 
 Explain briefly how to unmount the filesystem, remove the mount directory, and
