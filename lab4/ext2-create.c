@@ -426,8 +426,10 @@ void write_inode_table(int fd)
 	hello_symlink_inode.i_dtime = 0;
 	hello_symlink_inode.i_gid = 1000;
 	hello_symlink_inode.i_links_count = 1;
-	hello_symlink_inode.i_blocks = 2; /* These are oddly 512 blocks */
-	hello_symlink_inode.i_block[0] = HELLO_WORLD_FILE_BLOCKNO;
+	hello_symlink_inode.i_blocks = 0; /* These are oddly 512 blocks */
+	hello_symlink_inode.i_block[0] = 0x6c6c6568;
+	hello_symlink_inode.i_block[1] = 0x6f772d6f;
+	hello_symlink_inode.i_block[2] = 0x00646c72;
 	write_inode(fd, HELLO_INO, &hello_symlink_inode);
 }
 
