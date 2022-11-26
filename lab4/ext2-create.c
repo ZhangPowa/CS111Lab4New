@@ -307,12 +307,12 @@ void write_block_bitmap(int fd)
 
 	for (int i = 1; i < 32; i++)
 	{
-		buffer[i] = 0x00000000;
+		buffer[i] = 0x80000000;
 	}
 
 	for (int i = 32; i < 256; i++)
 	{
-		buffer[i] = 0x7FFFFFFF;
+		buffer[i] = 0xFFFFFFFF;
 	}
 
 	ssize_t size = sizeof(buffer);
