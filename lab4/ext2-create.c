@@ -419,7 +419,7 @@ void write_inode_table(int fd)
 	struct ext2_inode hello_symlink_inode = {0};
 	hello_symlink_inode.i_mode = EXT2_S_IFLNK | EXT2_S_IRUSR | EXT2_S_IWUSR | EXT2_S_IRGRP | EXT2_S_IROTH;
 	hello_symlink_inode.i_uid = 1000;
-	hello_symlink_inode.i_size = 12;
+	hello_symlink_inode.i_size = 11;
 	hello_symlink_inode.i_atime = current_time;
 	hello_symlink_inode.i_ctime = current_time;
 	hello_symlink_inode.i_mtime = current_time;
@@ -511,6 +511,19 @@ void write_lost_and_found_dir_block(int fd)
 void write_hello_world_file_block(int fd)
 {
 	/* This is all you */
+	off_t off = BLOCK_OFFSET(HELLO_WORLD_FILE_BLOCKNO);
+	off = lseek(fd, off, SEEK_SET);
+	if (off == -1)
+	{
+		errno_exit("lseek");
+	}
+
+	char buffer[13] = "Hello world\n";
+	ssize_t size = sizeof(buffer);
+	if (write(fd, buffer, size) != size)
+	{
+		errno_exit("write");
+	}
 }
 
 int main(int argc, char *argv[])
